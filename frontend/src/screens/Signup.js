@@ -35,7 +35,7 @@ export default function Signup() {
       const position = await getPosition();
       const { latitude, longitude } = position.coords;
 
-      const response = await fetch("http://localhost:5000/api/users/getlocation", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/users/getlocation`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ latlong: { lat: latitude, long: longitude } }),
@@ -67,7 +67,7 @@ export default function Signup() {
 
     try {
       setIsSubmitting(true);
-      const response = await fetch("http://localhost:5000/api/users/register", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/users/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

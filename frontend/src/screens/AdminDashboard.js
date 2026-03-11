@@ -21,7 +21,7 @@ export default function AdminDashboard() {
   }, []);
 
   const fetchRestaurants = async () => {
-    const res = await fetch("http://localhost:5000/api/restaurants");
+    const res = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/restaurants`);
     const json = await res.json();
     if (json.success) setRestaurants(json.data);
   };
@@ -33,7 +33,7 @@ export default function AdminDashboard() {
     }
     setIsSuggesting(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/restaurants/suggest-image?query=${foodData.name}`);
+      const res = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/restaurants/suggest-image?query=${foodData.name}`);
       const json = await res.json();
       if (json.success) {
         setFoodData({ ...foodData, image: json.imageUrl });
@@ -49,7 +49,7 @@ export default function AdminDashboard() {
     e.preventDefault();
     if (!selectedRes) return Swal.fire("Error", "Select a restaurant", "error");
 
-    const response = await fetch(`http://localhost:5000/api/restaurants/${selectedRes}/foods`, {
+    const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/restaurants/${selectedRes}/foods`, {
       method: "POST",
       headers: { 
         "Content-Type": "application/json",

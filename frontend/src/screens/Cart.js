@@ -83,7 +83,7 @@ export default function Cart() {
           deliveryAddress: selectedAddress._id
         };
 
-        const response = await fetch("http://localhost:5000/api/orders", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/orders`, {
           method: "POST",
           headers: { 
             "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export default function Cart() {
 
     try {
       // 1. Create Order on Backend
-      const response = await fetch("http://localhost:5000/api/orders/razorpay", {
+      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/orders/razorpay`, {
         method: "POST",
         headers: { 
           "Content-Type": "application/json",
@@ -159,7 +159,7 @@ export default function Cart() {
             }
           };
 
-          const verifyRes = await fetch("http://localhost:5000/api/orders/razorpay/verify", {
+          const verifyRes = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/orders/razorpay/verify`, {
             method: "POST",
             headers: { 
               "Content-Type": "application/json",

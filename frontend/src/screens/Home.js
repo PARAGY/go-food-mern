@@ -15,7 +15,7 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      const resp = await fetch("http://localhost:5000/api/restaurants/allData");
+      const resp = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:5000/api'}/restaurants/allData`);
       const json = await resp.json();
 
       if (json.success) {
