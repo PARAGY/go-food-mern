@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+  <rect x="2" y="7" width="20" height="10" rx="2" ry="2" fill="#FDE68A" stroke="#F59E0B"/>
+  <ellipse cx="7" cy="8" rx="4" ry="1.5" fill="#FECACA"/>
+  <ellipse cx="17" cy="8" rx="4" ry="1.5" fill="#FECACA"/>
+  <path d="M4 14c1 2 5 3 8 3s7-1 8-3" fill="#E2E8F0"/>
+  <text x="12" y="23" font-size="2" text-anchor="middle" fill="#111827">Burger</text>
+</svg>

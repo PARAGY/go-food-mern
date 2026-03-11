@@ -1,0 +1,15 @@
+export const errorHandler = (err, req, res, next) => {
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  const message = err.message;
+
+  // Custom Mongoose bad object ID
+  if (err.name === 'CastError' && err.kind === 'ObjectId') {
+    return res.status(404).json({ success: false, message: 'Resource not found' });
+  }
+
+  res.status(statusCode).json({
+    success: false,
+    message,
+    stack: process.env.NODE_ENV === "production" ? null : err.stack,
+  });
+};
