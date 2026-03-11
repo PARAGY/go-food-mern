@@ -4,7 +4,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../redux/slices/userSlice";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiShoppingCart, FiMenu, FiX, FiLogOut } from "react-icons/fi";
-import Cart from "../screens/Cart";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

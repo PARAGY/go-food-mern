@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { FiActivity, FiZap, FiTarget, FiCalendar } from "react-icons/fi";
 import { useSelector } from "react-redux";
 
 const NutritionDashboard = () => {
-    const [orders, setOrders] = useState([]);
     const [stats, setStats] = useState({ calories: 0, protein: 0, carbs: 0, fat: 0 });
     const { isAuthenticated } = useSelector((state) => state.user);
 
-    const fetchOrders = async () => {
+    const fetchOrders = useCallback(async () => {
         try {
             const token = localStorage.getItem("authToken");
             const response = await fetch("http://localhost:5000/api/orders/myorders", {
@@ -18,13 +17,12 @@ const NutritionDashboard = () => {
             });
             const data = await response.json();
             if (data.success) {
-                setOrders(data.data);
                 calculateStats(data.data);
             }
         } catch (error) {
             console.error("Fetch stats error:", error);
         }
-    };
+    }, []);
 
     const calculateStats = (orderList) => {
         let totals = { calories: 0, protein: 0, carbs: 0, fat: 0 };
@@ -45,7 +43,7 @@ const NutritionDashboard = () => {
 
     useEffect(() => {
         if (isAuthenticated) fetchOrders();
-    }, [isAuthenticated]);
+    }, [isAuthenticated, fetchOrders]);
 
     const cards = [
         { title: "Total Calories", value: `${stats.calories} kcal`, icon: <FiActivity />, color: "bg-orange-500" },
