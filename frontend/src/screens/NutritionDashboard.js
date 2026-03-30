@@ -28,9 +28,7 @@ const NutritionDashboard = () => {
         let totals = { calories: 0, protein: 0, carbs: 0, fat: 0 };
         orderList.forEach(order => {
             order.items.forEach(item => {
-                // Here we would ideally fetch the current nutrition for each item if not stored in order
-                // For now, we'll use a heuristic or assume the data is there
-                // Simulated extraction from common patterns:
+                
                 const cals = parseInt(item.calories) || (item.name.includes("Burger") ? 400 : 300);
                 totals.calories += cals * (item.qty || 1);
                 totals.protein += 15 * (item.qty || 1);

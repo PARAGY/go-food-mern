@@ -83,7 +83,7 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Right Side Actions */}
+
           <div className="hidden md:flex items-center gap-4">
             {!isAuthenticated ? (
               <div className="flex items-center gap-3">
